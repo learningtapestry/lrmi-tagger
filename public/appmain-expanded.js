@@ -238,24 +238,6 @@ function processJSONOutput(e) {
     }), JSON.stringify(t)
 }
 
-function readAlignmentDataFromFiles() {
-    $.ajax({
-        type: "GET",
-        url: "/ccss2asn-math.csv",
-        dataType: "text",
-        success: function(e) {
-            processDataForAlignmentArray(e)
-        }
-    }), $.ajax({
-        type: "GET",
-        url: "ccss2asn-ela.csv",
-        dataType: "text",
-        success: function(e) {
-            processDataForAlignmentArray(e)
-        }
-    })
-}
-
 function resetResource(e) {
     $.ajax({
         type: "POST",
