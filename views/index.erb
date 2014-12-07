@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LRMI Tagger</title>
+  <link href="./application.css" media="all" rel="stylesheet" type="text/css">
+  <link href="./appmain.css" media="all" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container-fluid header">
+  <div class="pull-left logo">
+  </div>
+  <div id="userWelcome" class="pull-right">
+  </div>
+</div>
+
+<div class="container-fluid header-title">
+  LRMI Tagger
+</div>
+
+<div class="container-fluid">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="pull-left">
+          <button class="btn btn-success" id="newbutton"><i class="icon-edit icon-white"></i> New</button>
+          <!-- <button class="btn btn-success" id="loadButton" data-toggle="modal" href="#loadModal"><i class="icon-upload icon-white"></i> Import</button> -->
+
+          <div class="btn-group">
+            <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-download icon-white"></i> Use  <span class="caret"></span></a>
+
+            <ul class="dropdown-menu">
+              <li><a id="exportCsvButton" href="#"><i class="icon-download icon-white"></i> Learning Registry</a></li>
+              <li><a id="exportJsonButton" href="#"><i class="icon-download icon-white"></i> RDFa</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pull-left navbar-text">Version 2.0</div>
+
+        <div class="pull-right">
+          <!-- <a class="btn btn-inverse" target="_blank" href="http://www.corestandards.org/"><i class="icon-info-sign icon-white"></i> CCSS Web</a>-->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="mainContentTopRight" class="main-content-topright border-right">
+    <ul class="nav nav-tabs">
+      <li id="generalTab" class="active"><a href="#generalPanel" data-toggle="tab">General</a></li>
+      <li id="educationTab" class=""><a href="#educationPanel" data-toggle="tab">Education</a></li>
+      <li id="usageTab" class=""><a href="#usagePanel" data-toggle="tab">Usage</a></li>
+    </ul>
+
+    <form name="LRMIData" id="LRMIData">
+      <fieldset>
+
+        <div class="tab-content" id="dataTabs">
+          <%= erb :_general %>
+          <%= erb :_education %>
+          <%= erb :_usage %>
+        </div>
+
+      </fieldset>
+    </form>
+
+  </div>
+
+  <div id="mainContentBottom" class="page">
+    <iframe id="iframe" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" scrolling="auto" frameborder="0" width="100%" height="100%"></iframe>
+    <!-- <object id="iframe" data=http://nasa.gov width="100%" height="100%"> <embed src=http://nasa.gov width="100%" height="100%"> </embed> Error: Embedded data could not be displayed. </object> -->
+
+  </div>
+
+</div>
+
+<div class="container-fluid footer">
+
+  <div class="pull-left logo">2014 - LRMI Tagger</div>
+
+  <!-- <div class='pull-right'>
+    <a href="http://www.inbloom.org/terms-of-use">Terms of Use</a> |
+    <a href="http://www.inbloom.org/privacy-policy">Privacy Policy</a>
+  </div>
+  -->
+
+</div>
+
+<div id="alignmentsModal" class="modal hide fade bigModal">
+  <div class="modal-header">
+    <a onclick="$(&#39;#alignmentsModal&#39;).modal(&#39;hide&#39;);" class="close">×</a>
+    <h3>Add Education Alignment</h3>
+  </div>
+  <div class="modal-body">
+
+    <input type="hidden" id="itemGUID">
+    <table cellspacing="2" cellpadding="5" class="table-condensed">
+      <tbody><tr>
+        <td style="text-align:left;">
+          <label class="control-label" for="educationalAlignment">Educational Alignment</label>
+          <select class="input-xlarge required" id="educationalAlignment">
+			<option value="CCSS - English Language Art"  selected="selected">CCSS - English Language Art</option>
+			<option value="CCSS - Mathematics">CCSS - Mathematics</option>
+          </select>
+        </td>
+        <td style="text-align:left;">
+          <label class="control-label" for="alignmentType">Alignment Type</label>
+          <select class="input-xlarge required" id="alignmentType">
+            <option>Alignment Type...</option>
+            <option value="assesses">Assesses</option>
+            <option value="teaches" selected="selected">Teaches</option>
+            <option value="requires">Requires</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <!-- Change dotNotation to a collection basd on CSV selected (ela, math)-->
+        <!-- -->
+        <td style="text-align:left;">
+          <label class="control-label" for="dotNotation">Dot Notation</label>
+          <input type="text" class="input-xlarge required" id="dotNotation" placeholder="Dot Notation">
+        </td>
+
+        <!-- Need to remove ItemURL field -->
+        <td style="text-align:left;">
+          <!-- 
+          <label class="control-label" for="itemURL">Item URL</label>
+          <input type="text" class="input-xlarge required" id="itemURL" placeholder='Item URL' readonly="readonly">
+          -->
+
+          <!-- Dispalay stripped CSV rows in dot notation (row[2]) based on collection selected -->
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left;" colspan="2">
+          <label class="control-label" for="description">Description</label>
+          <textarea type="text" class="textarea-xxlarge required" id="description" rows="3" readonly="readonly"></textarea>
+
+          <!-- button class="btn btn-mini btn-warning disabled" id="deleteButton"><i class="icon-remove"></i> Delete</button -->
+
+        </td>
+      </tr>
+      </tbody></table>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" id="addButton" disabled="disabled"><i class="icon-tag"></i> Add Alignment to Session</button>
+    <a onclick="$(&#39;#alignmentsModal&#39;).modal(&#39;hide&#39;);" class="btn">Cancel</a>
+  </div>
+</div>
+<div id="messageModal" class="modal hide fade">
+  <div class="modal-header">
+    <a onclick="$(&#39;#messageModal&#39;).modal(&#39;hide&#39;); return false;" class="close">×</a>
+    <h3 class="header-text"></h3>
+  </div>
+  <div class="modal-body">
+    <div class="body-text">
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a onclick="$(&#39;#messageModal&#39;).modal(&#39;hide&#39;); return false;" class="btn btn-success">OK</a>
+  </div>
+</div>
+<div id="resetModal" class="modal hide fade">
+  <div class="modal-header">
+    <a onclick="$(&#39;#resetModal&#39;).modal(&#39;hide&#39;); return false;" class="close">×</a>
+    <h3>Reset resource to draft state for editing?</h3>
+  </div>
+  <div class="modal-body">
+    <p>You're about to reset this resource back to draft state for editing.</p>
+    <p>Are you sure?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-success">Reset Resource</a>
+    <a onclick="$(&#39;#resetModal&#39;).modal(&#39;hide&#39;); return false;" class="btn">Cancel</a>
+  </div>
+</div>
+<div id="pleaseWaitModal" class="modal hide fade">
+  <div class="modal-header">
+    <h3 class="header-text">Please wait...</h3>
+  </div>
+  <div class="modal-body">
+    <div class="body-text">
+
+    </div>
+  </div>
+</div>
+
+<script src="./appmain.js" type="text/javascript"></script>
+<script src="./application.js" type="text/javascript"></script>
+<script id="hiddenlpsubmitdiv" style="display: none;"></script>
+<script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }}catch(e){}</script>
+
+</body></html>
