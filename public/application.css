@@ -2015,6 +2015,13 @@ height: 16px;
 	font-weight: normal;
 	margin: -1px;
 }
+
+.ui-menu li.ui-menu-item {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #555555;
+}
+
 /*!
  * jQuery UI Button 1.8.22
  *
