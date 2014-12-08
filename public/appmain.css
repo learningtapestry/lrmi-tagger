@@ -13,7 +13,6 @@
 
  */
 
-
 #slider span {
 	height:3px; float:left;width:99%;
 }
@@ -2201,10 +2200,6 @@ div.header-title{color:#DADADA;text-transform:uppercase;font-size:2em;padding:10
 #mainContentBottom{position:absolute;top:155px;left:330px;right:0px;bottom:32px;}
 #tags,#output,#history{padding-left:10px;}
 #userWelcome{padding-top:28px;color:#ffffff;text-shadow:1px 1px 0 rgba(0, 0, 0, 0.3);}#userWelcome a{color:#ffffff;}#userWelcome a.muted{color:#c6c6c6;}
-select.multiple{height:300px;}select.multiple#endUser{height:145px;}
-select.multiple#ageRange{height:165px;}
-select.multiple#interactivityType{height:60px;}
-select.multiple#groupType{height:165px;}
 li a.disabled{font-weight:bold;}li a.disabled:hover{color:#000000;background:#ffffff;}
 .navbar-inner{border:1px solid #c8c8c8;background-color:#d5d5d5;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #d9d9d9), color-stop(50%, #d5d5d5), color-stop(100%, #d0d0d0));background-image:-moz-linear-gradient(center top, #d9d9d9 0, #d5d5d5 50%, #d0d0d0 100%);background-image:-ms-linear-gradient(center top, #d9d9d9 0, #d5d5d5 50%, #d0d0d0 100%);background-image:-o-linear-gradient(center top, #d9d9d9 0, #d5d5d5 50%, #d0d0d0 100%);background-image:linear-gradient(center top, #d9d9d9 0, #d5d5d5 50%, #d0d0d0 100%);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#d9d9d9,endColorstr=#d0d0d0);padding:0 10px;}
 .btn-inverse{background-color:#037bbe;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #047bbe), color-stop(50%, #037bbe), color-stop(100%, #037bbe));background-image:-moz-linear-gradient(center top, #047bbe 0, #037bbe 50%, #037bbe 100%);background-image:-ms-linear-gradient(center top, #047bbe 0, #037bbe 50%, #037bbe 100%);background-image:-o-linear-gradient(center top, #047bbe 0, #037bbe 50%, #037bbe 100%);background-image:linear-gradient(center top, #047bbe 0, #037bbe 50%, #037bbe 100%);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#047bbe,endColorstr=#037bbe);}.btn-inverse:active{background-color:#0350be;}
@@ -2227,3 +2222,11 @@ p.durationLabel{border:0;color:#047bbe;font-size:10px;font-weight:bold;text-alig
 .modal-body hr{margin:5px 0;}
 #pleasewait{position:absolute;top:0;left:0;right:0;bottom:0;background-color:#000000;text-align:center;z-index:10000;opacity:0.9;}#pleasewait h1{padding:10px;background-color:#000;color:#fff;margin-top:auto;}
 form{margin-bottom:0;}
+
+.ui-menu li.ui-menu-item {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #555555;
+}
+
+
