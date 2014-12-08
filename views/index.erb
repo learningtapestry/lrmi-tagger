@@ -31,7 +31,12 @@
 </div>
 
 <div class="container-fluid header-title">
-  LRMI Tagger
+<table>
+  <tr>
+    <td>LRMI Tagger</td>
+    <td></td>
+  </tr>
+</table>
 </div>
 
 <div class="container-fluid">
@@ -47,8 +52,8 @@
             <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-download icon-white"></i> Use  <span class="caret"></span></a>
 
             <ul class="dropdown-menu">
-              <li><a id="exportCsvButton" href="#"><i class="icon-download icon-white"></i> Learning Registry</a></li>
-              <li><a id="exportJsonButton" href="#"><i class="icon-download icon-white"></i> RDFa</a></li>
+              <li><a id="exportCsvButton" href="#"> Learning Registry</a></li>
+              <li><a id="exportJsonButton" href="javascript:document.forms['LRMIData'].action='rdfa';document.forms['LRMIData'].submit();"> RDFa</a></li>
             </ul>
           </div>
         </div>
@@ -72,7 +77,7 @@
       <li id="standardsTab" class=""><a href="#standardsPanel" data-toggle="tab">Standards</a></li>
     </ul>
 
-    <form name="LRMIData" id="LRMIData">
+    <form name="LRMIData" id="LRMIData" method="post">
       <fieldset>
 
         <div class="tab-content" id="dataTabs">
@@ -95,6 +100,7 @@
 <div class="container-fluid footer">
   <div class="pull-left logo">LRMI Tagger</div>
 </div>
+
 
 <div id="alignmentsModal" class="modal hide fade bigModal">
   <div class="modal-header">
@@ -143,44 +149,6 @@
   <div class="modal-footer">
     <button class="btn btn-success" id="addButton" disabled="disabled"><i class="icon-tag"></i> Add Alignment to Session</button>
     <a onclick="$('#alignmentsModal').modal('hide');" class="btn">Cancel</a>
-  </div>
-</div>
-<div id="messageModal" class="modal hide fade">
-  <div class="modal-header">
-    <a onclick="$('#messageModal').modal('hide'); return false;" class="close">×</a>
-    <h3 class="header-text"></h3>
-  </div>
-  <div class="modal-body">
-    <div class="body-text">
-
-    </div>
-  </div>
-  <div class="modal-footer">
-    <a onclick="$('#messageModal').modal('hide'); return false;" class="btn btn-success">OK</a>
-  </div>
-</div>
-<div id="resetModal" class="modal hide fade">
-  <div class="modal-header">
-    <a onclick="$('#resetModal').modal('hide'); return false;" class="close">×</a>
-    <h3>Reset resource to draft state for editing?</h3>
-  </div>
-  <div class="modal-body">
-    <p>You're about to reset this resource back to draft state for editing.</p>
-    <p>Are you sure?</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn btn-success">Reset Resource</a>
-    <a onclick="$('#resetModal').modal('hide'); return false;" class="btn">Cancel</a>
-  </div>
-</div>
-<div id="pleaseWaitModal" class="modal hide fade">
-  <div class="modal-header">
-    <h3 class="header-text">Please wait...</h3>
-  </div>
-  <div class="modal-body">
-    <div class="body-text">
-
-    </div>
   </div>
 </div>
 

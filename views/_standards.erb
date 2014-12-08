@@ -5,9 +5,23 @@
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#educationAccordion" href="#endUserDiv" id="endUserLink">Standards</a>
       </div>
       <div id="endUserDiv" class="accordion-body">
-        <div class="accordion-inner">
-          Standards tab
+        <table class="table table-striped" id="currentAlignmentTable">
+          <thead>
+          <tr>
+            <th>DOT Notation</th>
+            <th>Alignment</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="noAlignmentsYet">
+            <td colspan="2">[ No alignments for this session ]</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <button class="btn btn-mini btn-success add-alignment pull-right"><i class="icon-tag"></i> Add Alignment</button>
       </div>
     </div>
   </div>
 </div>
+
