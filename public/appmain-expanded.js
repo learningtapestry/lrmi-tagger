@@ -128,24 +128,6 @@ function capitalize(e) {
     })
 }
 
-function clearTimeRequired() {
-    $("#slideryears").slider({
-        value: 0
-    }), $("#slidermonths").slider({
-        value: 0
-    }), $("#sliderweeks").slider({
-        value: 0
-    }), $("#sliderdays").slider({
-        value: 0
-    }), $("#sliderhours").slider({
-        value: 0
-    }), $("#sliderminutes").slider({
-        value: 0
-    }), $("#sliderseconds").slider({
-        value: 0
-    }), $("#amountyears").html("Year"), $("#amountmonths").html("Month"), $("#amountweeks").html("Week"), $("#amountdays").html("Day"), $("#amounthours").html("Hour"), $("#amountminutes").html("Minute"), $("#amountseconds").html("Second")
-}
-
 function csvPreprocess(e) {
     return (e + "").replace(/^([a-z])|\s+([a-z])|,+([a-z])/g, function(e) {
         return e.toUpperCase()
@@ -178,26 +160,6 @@ function processDataForAlignmentArray(e) {
         }), dotNotationDisplayArray.push(r[2])
     }
 }
-
-
-
-function saveAndExport(e, t) {
-    var n = new Date,
-        r = location.protocol + "//" + location.host + "/tagger/save_export/";
-    $("<form></form>", {
-        action: r,
-        method: "POST"
-    }).append($("<input></input>", {
-        name: "filename",
-        type: "hidden",
-        value: t + "_" + n.toISOString() + t
-    })).append($("<input></input>", {
-        name: "data",
-        type: "hidden",
-        value: e
-    })).appendTo("body").submit()
-}
-
 
 function redrawResourcesBasedOnItems() {
     $("#multiItemSelector").empty(), $("#multiItemSelector input[type=checkbox]").each(function(e, t) {
@@ -242,14 +204,6 @@ function setupDisplayFieldsEducationTab(e, t) {
         for (i in n) $.inArray(n[i], r) === -1 && s.push(n[i]);
         s.length > 0 && $("#" + t + "Other").attr("value", s.join(","))
     }
-}
-
-function showMessage(e, t) {
-    $("#pleaseWaitModal").modal("hide"), t == undefined && (t = "System Message"), $("#messageModal .header-text").html(t), $("#messageModal .body-text").html(e), $("#messageModal").modal("show")
-}
-
-function showPleaseWait(e) {
-    $("#pleaseWaitModal .body-text").html(e), $("#pleaseWaitModal").modal("show")
 }
 
 function toggleForm() {
@@ -302,115 +256,6 @@ function updateTextArea() {
             for (j in items[n.id].educationalAlignments) items[n.id].educationalAlignments[j].educationalAlignment != undefined && items[n.id].educationalAlignments[j].educationalAlignment != "" && (e += "Educational Alignment:\n" + items[n.id].educationalAlignments[j].educationalAlignment + "\n"), items[n.id].educationalAlignments[j].alignmentType != undefined && items[n.id].educationalAlignments[j].alignmentType != "" && (e += "Alignment Type:\n" + items[n.id].educationalAlignments[j].alignmentType + "\n"), items[n.id].educationalAlignments[j].dotNotation != undefined && items[n.id].educationalAlignments[j].dotNotation != "" && (e += "Dot Notation:\n" + items[n.id].educationalAlignments[j].dotNotation + "\n"), items[n.id].educationalAlignments[j].itemURL != undefined && items[n.id].educationalAlignments[j].itemURL != "" && (e += "Item URL:\n" + items[n.id].educationalAlignments[j].itemURL + "\n"), items[n.id].educationalAlignments[j].description != undefined && items[n.id].educationalAlignments[j].description != "" && (e += "Description:\n" + items[n.id].educationalAlignments[j].description + "\n");
         e += "\n-----------------------\n\n"
     }), $("#textarea").val(e)
-}
-
-function updateTimeRequired(e) {
-    if (e != undefined) {
-        var t = "timeRequired";
-        $("#multiItemSelector input[type=checkbox]:checked").each(function(n, r) {
-            var i = items[r.id][t].match(/(\d+)/g);
-            items[r.id][t] = "P" + (e == "Year" ? $("#slideryears").slider("value") : i[0]) + "Y" + (e == "Month" ? $("#slidermonths").slider("value") : i[1]) + "M" + (e == "Week" ? $("#sliderweeks").slider("value") : i[2]) + "W" + (e == "Day" ? $("#sliderdays").slider("value") : i[3]) + "DT" + (e == "Hour" ? $("#sliderhours").slider("value") : i[4]) + "H" + (e == "Minute" ? $("#sliderminutes").slider("value") : i[5]) + "M" + (e == "Second" ? $("#sliderseconds").slider("value") : i[6]) + "S"
-        }), updateTextArea()
-    }
-}
-
-function validateAlignmentForm() {
-    default_values = new Array, $(".required").each(function(e, t) {
-        default_values[e] = t.value
-    }), req_all = default_values.length, filled_out_values = $.grep(default_values, function(e) {
-        return e
-    }), filled_out_values = $.grep(filled_out_values, function(e) {
-        return e != "Alignment Type..."
-    }), filled_out_values = $.grep(filled_out_values, function(e) {
-        return e != "Loading (please wait)...."
-    }), req_filled = filled_out_values.length, req_filled > 0 && req_all == req_filled ? $("#addButton").removeAttr("disabled") : $("#addButton").attr("disabled", "disabled")
-}
-
-function validateImportHeaders(e) {
-    var t = e[0],
-        n = t[0];
-    n == "Metadata:" ? (validValues = ["Metadata:", "Title", "URL", "Time Required (FORMAT: P0Y0M0W0DT0H0M0S) ISO8601", "Topic", "Created (FORMAT: YYYY-MM-DD)", "Creator", "Publisher", "Language", "Mediatype", "Use Rights URL", "Is based on  URL", "Intended End User Role", "Educational Use", "Typical Age Range", "Interactivity Type", "Learning Resource Type", "Educational Alignment", "Alignment Type", "Dot Notation", "Target URL", "Target Description", "Group Type", "Thumbnail URL", "Tag Description"], compareValueEquals(t, validValues, "There appears to be a value comparison error in the firstRow headers preventing Tagger from knowing if this is a valid file")) : (fileHasErrors = !0, fileErrors.push("<strong>Invalid file imported</strong><br /> The file you attempted to import doesn't appear to have the correct header identifier ('" + n + "' was  sent, it should be 'Metadata:') for this version of Tagger (v1.1).<br /><br />"))
-}
-
-function validateImportColumns(e) {
-    var t = e[0],
-        n = t[0];
-    if (n == "Metadata:")
-        if (e.length > 1)
-            for (i in e) e[i].length != 25 && e[i].length > 1 && (fileHasErrors = !0, fileErrors.push("<strong>Invalid file imported</strong><br /> The file you attempted to import doesn't appear to have the correct number of columns in row #" + i + " (There appear to be '" + e[i].length + "', it should be '25') for this version of Tagger (v1.1).<br /><br />"));
-        else fileHasErrors = !0, fileErrors.push("<strong>Empty file imported</strong><br /> The file you attempted to import doesn't appear to have any content in it.<br /><br />")
-}
-
-function validateImportField(e, t) {
-    t == undefined && (t = "");
-    var n = "";
-    switch (e) {
-        case "title":
-        case "topic":
-        case "tagDescription":
-        case "thumbnail":
-        case "url":
-        case "usageRightsURL":
-        case "isBasedOnURL":
-        case "publisher":
-        case "createdBy":
-            n = t;
-            break;
-        case "language":
-            t != undefined && t != "" && (tValue = t.toLowerCase(), tValue = tValue.replace(/^en$/, "EN_US"), tValue = tValue.replace(/^english$/, "EN_US"), tValue = tValue.replace(/^engrish$/, "EN_US"), tValue = tValue.replace(/^spanish$/, "ES_ES"), tValue = tValue.replace(/^es$/, "ES_ES"), tValue = tValue.replace(/^espanol$/, "ES_ES"), tValue = tValue.replace(/^español$/, "ES_ES"), validOptions = ["EN_US", "ES_ES"], tValue = tValue.toUpperCase(), tValue = tValue.replace("-", "_"), $.inArray(tValue, validOptions) == -1 ? (fileHasErrors = !0, fileErrors.push('<strong>Invalid file imported -- <em>&quot;Language&quot;</em></strong><br /> It appears the sent language value is incorrect: "' + tValue + '" -- Valid Options: "' + validOptions.join() + '"<br /><br />')) : n = tValue);
-            break;
-        case "createdOn":
-            if (t != undefined && t != "") {
-                var r = 216e5,
-                    i = Date.parse(t),
-                    s = new Date(i + r);
-                isNaN(s) || s.getMonth() + 1 == 0 || s.getDate() == 0 || s.getFullYear() == 0 ? (fileHasErrors = !0, fileErrors.push("<strong>Invalid file imported -- <em>&quot;Created On&quot;</em></strong><br /> It would appear you're attempting to import a file that is containing a &quot;Created On&quot; date that is an invalid ISO8601 value.  Value sent: &quot;" + t + "&quot;<br /><br />")) : n = (s.getMonth() + 1 < 10 ? "0" + (s.getMonth() + 1) : s.getMonth() + 1) + "-" + (s.getDate() < 10 ? "0" + s.getDate() : s.getDate()) + "-" + s.getFullYear()
-            }
-            break;
-        case "endUser":
-            t != undefined && t != "" && (validOptions = ["Administrator", "Mentor", "Parent", "Peer Tutor", "Specialist", "Student", "Teacher", "Team"], n = checkCSVValuesForValidOptions("End User", validOptions, t));
-            break;
-        case "ageRange":
-            t != undefined && t != "" && (validOptions = ["0-2", "3-5", "5-8", "8-10", "10-12", "12-14", "14-16", "16-18", "18+"], n = checkCSVValuesForValidOptions("Age Range", validOptions, t));
-            break;
-        case "educationalUse":
-            t != undefined && t != "" && (validOptions = ["Activity", "Analogies", "Assessment", "Auditory", "Brainstorming", "Classifying", "Comparing", "Cooperative Learning", "Creative Response", "Demonstration", "Differentiation", "Discovery Learning", "Discussion/Debate", "Drill & Practice", "Experiential", "Field Trip", "Game", "Generating Hypotheses", "Guided Questions", "Hands-on", "Homework", "Identify Similarities & Differences", "Inquiry", "Interactive", "Interview/Survey", "Interviews", "Introduction", "Journaling", "Kinesthetic", "Laboratory", "Lecture", "Metaphors", "Model & Simulation", "Musical", "Nonlinguistic", "Note Taking", "Peer Coaching", "Peer Response", "Play", "Presentation", "Problem Solving", "Problem Based", "Project", "Questioning", "Reading", "Reciprocal Teaching", "Reflection", "Reinforcement", "Research", "Review", "Role Playing", "Service Learning", "Simulations", "Summarizing", "Technology", "Testing Hypotheses", "Thematic Instruction", "Visual/Spatial", "Word Association", "Writing"], n = checkCSVValuesForValidOptions("Educational Use", validOptions, t));
-            break;
-        case "interactivityType":
-            t != undefined && t != "" && (validOptions = ["Active", "Expositive", "Mixed"], n = checkCSVValuesForValidOptions("Interactivity Type", validOptions, t));
-            break;
-        case "learningResourceType":
-            t != undefined && t != "" && (validOptions = ["Activity", "Assessment", "Audio", "Broadcast", "Calculator", "Discussion", "E-Mail", "Field Trip", "Hands-on", "In-person/Speaker", "Kinesthetic", "Lab Material", "Lesson Plan", "Manipulative", "MBL (Microcomputer Based)", "Model", "On-Line", "Podcast", "Presentation", "Printed", "Quiz", "Robotics", "Still Image", "Test", "Video", "Wiki", "Worksheet"], n = checkCSVValuesForValidOptions("Learning Resource Type", validOptions, t));
-            break;
-        case "mediaType":
-            t != undefined && t != "" && (validOptions = ["Audio CD", "Audiotape", "Calculator", "CD-I", "CD-ROM", "Diskette", "Duplication Master", "DVD/Blu-ray", "E-Mail", "Electronic Slides", "Field Trip", "Filmstrip", "Flash", "Image", "In-person/Speaker", "Interactive Whiteboard", "Manipulative", "MBL (Microcomputer Based)", "Microfiche", "Overhead", "Pamphlet", "PDF", "Person-to-Person", "Phonograph Record", "Photo", "Podcast", "Printed", "Radio", "Robotics", "Satellite", "Slides", "Television", "Transparency", "Video Conference", "Videodisc", "Webpage", "Wiki"], n = checkCSVValuesForValidOptions("Media Type", validOptions, t));
-            break;
-        case "groupType":
-            t != undefined && t != "" && (validOptions = ["Class", "Community", "Grade", "Group Large (6+ Members)", "Group Small (3-5 Members)", "Individual", "Inter-generational", "Multiple Class", "Pair", "School", "State/Province", "World"], n = checkCSVValuesForValidOptions("Group Type", validOptions, t));
-            break;
-        case "timeRequired":
-            t != undefined && t != "" ? nezasa.iso8601.Period.isValid(t) ? (parsedTimeRequired = nezasa.iso8601.Period.parse(t), parsedTimeRequired[0] = "P" + parsedTimeRequired[0] + "Y", parsedTimeRequired[1] = parsedTimeRequired[1] + "M", parsedTimeRequired[2] = parsedTimeRequired[2] + "W", parsedTimeRequired[3] = parsedTimeRequired[3] + "D", parsedTimeRequired[4] = "T" + parsedTimeRequired[4] + "H", parsedTimeRequired[5] = parsedTimeRequired[5] + "M", parsedTimeRequired[6] = parsedTimeRequired[6] + "S", n = parsedTimeRequired.join("")) : (n = "", fileHasErrors = !0, fileErrors.push("<strong>Invalid file imported -- <em>&quot;Time Required&quot;</em></strong><br /> It would appear you're attempting to import a file with an invalid ISO8601 &quot;Time Required&quot; value.  Value sent &quot;" + t + "&quot;<br /><br />")) : n = "P0Y0M0W0DT0H0M0S"
-    }
-    return n
-}
-
-function validateImportEducationalAlignment(e) {
-    var t = ["Teaches", "Assesses", "Requires"];
-    checkCSVValuesForValidOptions("Alignment Type", t, e.alignmentType, !0);
-    var n = $.inArray(e.dotNotation, dotNotationDisplayArray);
-    if (n != -1) {
-        var r = e.dotNotation.split(".");
-        r[0].toUpperCase() == "CCSS" && (e.educationalAlignment = "Common Core State Standards")
-    }
-    return e
-}
-
-function checkCSVValuesForValidOptions(e, n, r, i) {
-    r == undefined && i == 1 && (fileHasErrors = !0, fileErrors.push('<strong>Invalid file imported -- <em>"' + e + '"</em></strong><br /> Value set: "undefined" -- Valid Options: "' + n.join() + '"<br /><br />'));
-    if (r == undefined) return "";
-    resValues = [], tValues = r.toLowerCase(), tValues = tValues.split(",");
-    for (t in tValues) tValue = $.trim(tValues[t]), tValue = toCorrectCase(tValue), $.inArray(tValue, n) == -1 && i == 1 ? (fileHasErrors = !0, fileErrors.push('<strong>Invalid file imported -- <em>"' + e + '"</em></strong><br /> Value set: "' + tValue + '" -- Valid Options: "' + n.join() + '"<br /><br />')) : resValues.push(tValue);
-    return resValues.join(",")
 }
 
 function toCorrectCase(e) {
