@@ -13,14 +13,7 @@ Papa.parse("./csv/ccss-ela.csv",{download:true,
 		console.log("Remote file parsed!", results);
         englishcsvdata = results;
 	}})
-$(document).ready(function(){
 
-	$("#url").blur(function() {
-		url_input = $("#url").val();
-		if (url_input.match("(\b(https?|ftp|file)://)?[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]"))
-			$('#iframe').attr('src', url_input);
-	});
-});
 $('#alignmentsModal').on('show', function () {
 //alert("show")
 onload = $("#educationalAlignment").find("option:selected").val();
