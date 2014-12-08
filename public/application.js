@@ -16,22 +16,18 @@ Papa.parse("./csv/ccss-ela.csv",{download:true,
 $(document).ready(function(){
 
 	$("#url").blur(function() {
-	  $('#iframe').attr('src', $("#url").val())
+		url_input = $("#url").val();
+		if (url_input.match("(\b(https?|ftp|file)://)?[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]"))
+			$('#iframe').attr('src', url_input);
 	});
-//$( "#mainContentTopRight" ).tabs();
-
-
 });
 $('#alignmentsModal').on('show', function () {
 //alert("show")
 onload = $("#educationalAlignment").find("option:selected").val();
-if(onload=="CCSS - English Language Art")
-{
-csvdata = englishcsvdata.data;
-}
-else{
-csvdata = mathscsvdata.data;
-}
+if(onload=="CCSS - English Language Arts")
+	{ csvdata = englishcsvdata.data; }
+else
+	{ csvdata = mathscsvdata.data; }
 autodata = $.map(csvdata, function(el) { return el; })
 $( "#dotNotation" ).autocomplete({
       source:autodata
@@ -40,7 +36,7 @@ $( "#dotNotation" ).autocomplete({
 	$("#educationalAlignment").change(function(){
 	$( "#dotNotation" ).val("")
 		onload = $("#educationalAlignment").find("option:selected").val();
-		if(onload=="CCSS - English Language Art")
+		if(onload=="CCSS - English Language Arts")
 		{
 		csvdata = englishcsvdata.data;
 		}
