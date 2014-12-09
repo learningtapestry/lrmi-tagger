@@ -32,4 +32,8 @@ class MyApp < Sinatra::Base
   post '/rdfa' do
     erb :rdfa
   end
+
+  post '/lr' do
+    erb :lr
+  end
 end

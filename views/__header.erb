@@ -44,14 +44,14 @@
     <div class="navbar-inner">
       <div class="container">
         <div class="pull-left">
-          <button class="btn btn-success" id="newbutton"><i class="icon-edit icon-white"></i> New</button>
-          <!-- <button class="btn btn-success" id="loadButton" data-toggle="modal" href="#loadModal"><i class="icon-upload icon-white"></i> Import</button> -->
+          <a class="btn btn-success" href="." id="new_btn"><i class="icon-edit icon-white"></i> New</a>
+          <!-- <button class="btn btn-success" id="newbutton"><i class="icon-edit icon-white"></i> New</button> -->
 
           <div class="btn-group">
             <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-download icon-white"></i> Use  <span class="caret"></span></a>
 
             <ul class="dropdown-menu">
-              <li><a id="exportCsvButton" href="#"> Learning Registry</a></li>
+              <li><a id="exportCsvButton" href="javascript:document.forms['LRMIData'].action='lr';document.forms['LRMIData'].submit();"> Learning Registry</a></li>
               <li><a id="exportJsonButton" href="javascript:document.forms['LRMIData'].action='rdfa';document.forms['LRMIData'].submit();"> RDFa</a></li>
             </ul>
           </div>

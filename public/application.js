@@ -73,3 +73,9 @@ $(document).on("click",".closetdd",function(){
 	var $thisc = $(this);
 	$thisc.parent().parent().hide("slow").remove();
 	})
+
+$(function() {
+	$('#new_btn').click(function() {
+		return window.confirm("Are you sure you would like to tag a new resource?");
+	});
+});
