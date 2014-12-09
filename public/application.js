@@ -21,11 +21,9 @@ else
 	{ csvdata = mathscsvdata.data; }
 autodata = $.map(csvdata, function(el) { return el; })
 $( "#dotNotation" ).autocomplete({
-minLength: 0,
      source:autodata,
 			  focus: function( event, ui ) {
-			  //console.log(event)
-			  //console.log(ui)
+
 				$( "#dotNotation" ).val( ui.item.DotNotation );
 				return false;
 			  },
@@ -53,7 +51,6 @@ minLength: 0,
 		}
 		autodata = $.map(csvdata, function(el) { return el; })
 		$( "#dotNotation" ).autocomplete({
-		minLength: 0,
 			  source:autodata,
 			  focus: function( event, ui ) {
 				$( "#dotNotation" ).val( ui.item.DotNotation );
@@ -71,3 +68,8 @@ minLength: 0,
     };
 	})
 })
+
+$(document).on("click",".closetdd",function(){
+	var $thisc = $(this);
+	$thisc.parent().parent().hide("slow").remove();
+	})

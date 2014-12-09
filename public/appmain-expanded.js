@@ -8459,9 +8459,10 @@ var hexcase = 0,
                 itemURL: i
             },
             o = objectToHash(s);
-        return alignments[o] == undefined && (alignments[o] = s, n == "" && (n = "N/A"), $("#currentAlignmentTable > tbody:last").append('<tr><td><label>' + n + "</label><input type='hidden' value='"+n+"'></td><td>" + capitalize(t) + "</td><td><a style='color:red;'>X</a></td></tr>")), updateTextArea(), $("#dotNotation").val(""), $("#description").val(""), $("#itemURL").val(""), $("#itemGUID").val(""), !1
+        return alignments[o] == undefined && (alignments[o] = s, n == "" && (n = "N/A"), $("#currentAlignmentTable > tbody:last").append('<tr><td><label>' + n + "</label><input type='hidden' name='standards[]' value='"+n+"'></td><td>" + capitalize(t) + "</td><td><a style='color:red;cursor:pointer;' class='closetdd'>X</a></td></tr>")), updateTextArea(), $("#dotNotation").val(""), $("#description").val(""), $("#itemURL").val(""), $("#itemGUID").val(""), !1
         //return alignments[o] == undefined && (alignments[o] = s, n == "" && (n = "N/A"), $("#currentAlignmentTable > tbody:last").append('<tr><td><label class="checkbox"><input type="checkbox" class="alignment-checkbox" value="' + o + '" />' + n + "</label></td><td>" + capitalize(t) + "</td></tr>")), updateTextArea(), $("#alignmentType").val(""), $("#dotNotation").val(""), $("#description").val(""), $("#itemURL").val(""), $("#itemGUID").val(""), !1
     })
+	
 }), $(function() {
     $("#addThumbnailButton").click(function() {
         return $(this).hasClass("disabled") || $("#thumbModal").modal("show"), !1
