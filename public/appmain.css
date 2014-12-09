@@ -2229,4 +2229,18 @@ form{margin-bottom:0;}
   color: #555555;
 }
 
+#educationalUse {
+  height: 100px;
+}
 
+#ageRange {
+  height: 150px;
+}
+
+#learningResource {
+  height: 180px;
+}
+
+#mediaType {
+  height: 180px;
+}
