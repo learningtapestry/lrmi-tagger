@@ -1,12 +1,12 @@
-<div class="tab-pane" id="usagePanel">
-  <div class="accordion" id="usageAccordion">
+<div class="tab-pane" id="resourcePanel">
+  <div class="accordion" id="resourceAccordion">
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#usageAccordion" href="#learningResourceDiv">Learning Resource Type</a>
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#resourceAccordion" href="#learningResourceDiv">Learning Resource Type</a>
       </div>
       <div id="learningResourceDiv" class="accordion-body">
         <div class="accordion-inner">
-          <select multiple="multiple" class="multiple input-xlarge" id="learningResource">
+          <select multiple="multiple" class="multiple input-xlarge" id="learningResource" name="learningResource">
             <option>Alternate Assessment</option>
             <option>Assessment Item</option>
             <option>Career Information</option>
@@ -35,11 +35,11 @@
 
       <div class="accordion-group">
         <div class="accordion-heading">
-          <a class="accordion-toggle" data-parent="#usageAccordion" href="#mediaTypeDiv" id="mediaTypeDiv">Media Type</a>
+          <a class="accordion-toggle" data-parent="#resourceAccordion" href="#mediaTypeDiv" id="mediaTypeDiv">Media Type</a>
         </div>
         <div id="mediaTypeDiv" class="accordion-body">
           <div class="accordion-inner">
-            <select multiple="multiple" class="multiple input-xlarge" id="mediaType" style="height: auto">
+            <select multiple="multiple" class="multiple input-xlarge" name="mediaType" id="mediaType">
               <option>Application/Software</option>
               <option>Archive</option>
               <option>Audio</option>
