@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LRMI Tagger</title>
+  <link href="./appmain.css" media="all" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <style>
+    .ui-widget-content{
+      z-index:99999;
+    }
+    .ui-autocomplete {
+      max-height: 100px;
+      overflow-y: auto;
+      /* prevent horizontal scrollbar */
+      overflow-x: hidden;
+    }
+    /* IE 6 doesn't support max-height
+     * we use height instead, but this forces the menu to always be this tall
+     */
+    * html .ui-autocomplete {
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid header">
+  <div class="pull-left logo">
+  </div>
+  <div id="userWelcome" class="pull-right">
+  </div>
+</div>
+
+<div class="container-fluid header-title">
+  <table>
+    <tr>
+      <td>LRMI Tagger</td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+
+<div class="container-fluid">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="pull-left">
+          <button class="btn btn-success" id="newbutton"><i class="icon-edit icon-white"></i> New</button>
+          <!-- <button class="btn btn-success" id="loadButton" data-toggle="modal" href="#loadModal"><i class="icon-upload icon-white"></i> Import</button> -->
+
+          <div class="btn-group">
+            <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-download icon-white"></i> Use  <span class="caret"></span></a>
+
+            <ul class="dropdown-menu">
+              <li><a id="exportCsvButton" href="#"> Learning Registry</a></li>
+              <li><a id="exportJsonButton" href="javascript:document.forms['LRMIData'].action='rdfa';document.forms['LRMIData'].submit();"> RDFa</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pull-left navbar-text">Version 2.0</div>
+
+        <div class="pull-right">
+          <!-- <a class="btn btn-inverse" target="_blank" href="http://www.corestandards.org/"><i class="icon-info-sign icon-white"></i> CCSS Web</a>-->
+        </div>
+
+      </div>
+    </div>
+  </div>
