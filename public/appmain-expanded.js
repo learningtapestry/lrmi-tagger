@@ -8188,7 +8188,7 @@ var hexcase = 0,
     chrsz = 8;
 (function() {}).call(this), $(function() {
     $(".required").live("change", function() {
-        validateAlignmentForm()
+        //validateAlignmentForm()
     })
 }), $(function() {
     $("#ageRange").change(function() {
@@ -8217,7 +8217,7 @@ var hexcase = 0,
         }), updateTextArea()
     })
 }), $(function() {
-    $("#dotNotation").change(function(e) {
+    /*$("#dotNotation").change(function(e) {
         if (e.target.value != previousDotValue) {
             previousDotValue = $("#dotNotation").val(), document.getElementById("description").value = "";
             var t = $.inArray(e.target.value, dotNotationDisplayArray);
@@ -8239,7 +8239,7 @@ var hexcase = 0,
                 }))
             }
         }
-    })
+    })*/
 }), $(function() {
     $("#educationalUse").change(function() {
         updateItemEducationTab("educationalUse", "educationalUseOther")
@@ -8443,6 +8443,7 @@ var hexcase = 0,
         if (e.which == 13) return !1
     }
 }), $(function() {
+ var alignments="";
     $("#addButton").click(function() {
         $("#alignmentsModal").modal("hide"), $(".noAlignmentsYet").hide();
         var e = $("#educationalAlignment").val(),
@@ -8458,7 +8459,8 @@ var hexcase = 0,
                 itemURL: i
             },
             o = objectToHash(s);
-        return alignments[o] == undefined && (alignments[o] = s, n == "" && (n = "N/A"), $("#currentAlignmentTable > tbody:last").append('<tr><td><label class="checkbox"><input type="checkbox" class="alignment-checkbox" value="' + o + '" />' + n + "</label></td><td>" + capitalize(t) + "</td></tr>")), updateTextArea(), $("#alignmentType").val(""), $("#dotNotation").val(""), $("#description").val(""), $("#itemURL").val(""), $("#itemGUID").val(""), !1
+        return alignments[o] == undefined && (alignments[o] = s, n == "" && (n = "N/A"), $("#currentAlignmentTable > tbody:last").append('<tr><td><label>' + n + "</label><input type='hidden' value='"+n+"'></td><td>" + capitalize(t) + "</td><td><a style='color:red;'>X</a></td></tr>")), updateTextArea(), $("#dotNotation").val(""), $("#description").val(""), $("#itemURL").val(""), $("#itemGUID").val(""), !1
+        //return alignments[o] == undefined && (alignments[o] = s, n == "" && (n = "N/A"), $("#currentAlignmentTable > tbody:last").append('<tr><td><label class="checkbox"><input type="checkbox" class="alignment-checkbox" value="' + o + '" />' + n + "</label></td><td>" + capitalize(t) + "</td></tr>")), updateTextArea(), $("#alignmentType").val(""), $("#dotNotation").val(""), $("#description").val(""), $("#itemURL").val(""), $("#itemGUID").val(""), !1
     })
 }), $(function() {
     $("#addThumbnailButton").click(function() {
