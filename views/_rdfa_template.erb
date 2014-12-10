@@ -1,0 +1,18 @@
+<span prefix="schema: http://schema.org/" typeof="schema:CreativeWork">
+
+  <% if params[:url] %>  <meta property="schema:url" content="<%= params[:url] %>" />  <% end %>
+  <% if params[:title] %>  <meta property="schema:name" content="<%= params[:title] %>" />  <% end %>
+  <% if params[:description] %>  <meta property="schema:description" content="<%= params[:description] %>" />  <% end %>
+  <% if params[:publisher] %>  <meta property="schema:publisher" content="<%= params[:publisher] %>" />  <% end %>
+  <% if params[:createdBy] %>  <meta property="schema:createdby" content="<%= params[:createdBy] %>" />  <% end %>
+
+  <% if params[:educationalUse] %>  <meta property="schema:educationalUse" content="<%= params[:educationalUse] %>" />  <% end %>
+  <% if params[:endUser] %>  <meta property="schema:endUser" content="<%= params[:endUser] %>" />  <% end %>
+  <% if params[:ageRange] %>  <meta property="schema:ageRange" content="<%= params[:ageRange] %>" />  <% end %>
+
+  <% if params[:learningResource] %>  <meta property="schema:learningResource" content="<%= params[:learningResource] %>" />  <% end %>
+  <% if params[:mediaType] %>  <meta property="schema:mediaType" content="<%= params[:mediaType] %>" />  <% end %>
+  <% if params[:endUser] %>  <meta property="schema:endUser" content="<%= params[:endUser] %>" />  <% end %>
+
+  <% if params[:standards] %>  <meta property="schema:standards" content="<%= params[:standards] %>" />  <% end %>
+</span>
