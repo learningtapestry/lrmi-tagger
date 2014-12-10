@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'sinatra/reloader' 
+require 'sinatra'
 require 'json'
 
 class MyApp < Sinatra::Base
@@ -9,7 +9,6 @@ class MyApp < Sinatra::Base
 
   configure do
     set :app_file, __FILE__
-    register Sinatra::Reloader
   end
 
   configure :development do
