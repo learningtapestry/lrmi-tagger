@@ -3,76 +3,56 @@ var englishcsvdata="";
 var csvdata = "";
 var onload = "";
 var autodata = "";
-Papa.parse("./csv/ccss-math-descriptions.csv",{download:true,header:true,
+Papa.parse("./csv/ccss-math.csv",{download:true,
 	complete: function(results) {
 		console.log("Remote file parsed!", results);
-        mathscsvdata = results;
+		mathscsvdata = results;
 	}})
-Papa.parse("./csv/ccss-ela-descriptions.csv",{download:true,header:true,
+Papa.parse("./csv/ccss-ela.csv",{download:true,
 	complete: function(results) {
 		console.log("Remote file parsed!", results);
-        englishcsvdata = results;
+		englishcsvdata = results;
 	}})
-$('#alignmentsModal').on('show', function () {
-onload = $("#educationalAlignment").find("option:selected").val();
-if(onload=="CCSS - English Language Arts")
-	{ csvdata = englishcsvdata.data; }
-else
-	{ csvdata = mathscsvdata.data; }
-autodata = $.map(csvdata, function(el) { return el; })
-$( "#dotNotation" ).autocomplete({
-     source:autodata,
-			  focus: function( event, ui ) {
+$(document).ready(function(){
 
-				$( "#dotNotation" ).val( ui.item.DotNotation );
-				return false;
-			  },
-			  select: function( event, ui ) {
-				$( "#description" ).val(ui.item.StandardDescription);
-				$("#addButton").attr("disabled",false)
-				return false;
-			  }
-    }).autocomplete( "instance" )._renderItem = function( ul, item ) {
-      return $( "<li>" )
-        .append( "<a>" + item.DotNotation +"</a>" )
-        .appendTo( ul );
-    };
-	
+	$("#url").blur(function() {
+		$('#iframe').attr('src', $("#url").val())
+	});
+//$( "#mainContentTopRight" ).tabs();
+
+
+});
+$('#alignmentsModal').on('show', function () {
+//alert("show")
+	onload = $("#educationalAlignment").find("option:selected").val();
+	if(onload=="CCSS - English Language Arts")
+	{
+		csvdata = englishcsvdata.data;
+	}
+	else{
+		csvdata = mathscsvdata.data;
+	}
+	autodata = $.map(csvdata, function(el) { return el; })
+	$( "#dotNotation" ).autocomplete({
+		source:autodata
+	});
+
 	$("#educationalAlignment").change(function(){
-	$( "#dotNotation" ).val("")
-	$("#addButton").attr("disabled",true)
+		$( "#dotNotation" ).val("")
 		onload = $("#educationalAlignment").find("option:selected").val();
 		if(onload=="CCSS - English Language Arts")
 		{
-		csvdata = englishcsvdata.data;
+			csvdata = englishcsvdata.data;
 		}
 		else{
-		csvdata = mathscsvdata.data;
+			csvdata = mathscsvdata.data;
 		}
 		autodata = $.map(csvdata, function(el) { return el; })
 		$( "#dotNotation" ).autocomplete({
-			  source:autodata,
-			  focus: function( event, ui ) {
-				$( "#dotNotation" ).val( ui.item.DotNotation );
-				return false;
-			  },
-			  select: function( event, ui ) {
-				$( "#description" ).val(ui.item.StandardDescription);
-				$("#addButton").attr("disabled",false)
-				return false;
-			  }
-			}).autocomplete( "instance" )._renderItem = function( ul, item ) {
-      return $( "<li>" )
-        .append( "<a>" + item.DotNotation +"</a>" )
-        .appendTo( ul );
-    };
+			source:autodata
+		});
 	})
-})
-
-$(document).on("click",".closetdd",function(){
-	var $thisc = $(this);
-	$thisc.parent().parent().hide("slow").remove();
-	})
+});
 
 $(function() {
 	$('#new_btn').click(function() {
