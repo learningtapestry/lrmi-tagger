@@ -5,25 +5,16 @@ var onload = "";
 var autodata = "";
 Papa.parse("./csv/ccss-math.csv",{download:true,
 	complete: function(results) {
-		console.log("Remote file parsed!", results);
+		console.log("ccss-math.csv loaded.");
 		mathscsvdata = results;
-	}})
+	}});
 Papa.parse("./csv/ccss-ela.csv",{download:true,
 	complete: function(results) {
-		console.log("Remote file parsed!", results);
+		console.log("ccss-ela.csv loaded.");
 		englishcsvdata = results;
-	}})
-$(document).ready(function(){
+	}});
 
-	$("#url").blur(function() {
-		$('#iframe').attr('src', $("#url").val())
-	});
-//$( "#mainContentTopRight" ).tabs();
-
-
-});
 $('#alignmentsModal').on('show', function () {
-//alert("show")
 	onload = $("#educationalAlignment").find("option:selected").val();
 	if(onload=="CCSS - English Language Arts")
 	{
@@ -53,6 +44,11 @@ $('#alignmentsModal').on('show', function () {
 		});
 	})
 });
+
+$(document).on("click",".closetdd",function(){
+	var $thisc = $(this);
+	$thisc.parent().parent().hide("slow").remove();
+})
 
 $(function() {
 	$('#new_btn').click(function() {
