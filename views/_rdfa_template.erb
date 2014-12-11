@@ -18,22 +18,19 @@
     <meta property="schema:author" content="<%= params[:author] %>" />
 <% end %>
 <% if params[:timeRequired] and not params[:timeRequired].empty? %>
-    <meta property="schema:timeRequired" content="<%= 'P' + params[:timeRequired] %>" />
+    <meta property="schema:timeRequired" content="<%= params[:timeRequired] %>" />
 <% end %>
 <% if params[:educationalUse] %>
     <meta property="schema:educationalUse" content="<%= params[:educationalUse].join(',') %>" />
 <% end %>
 <% if params[:endUser] %>
-    <meta property="schema:endUser" content="<%= params[:endUser].join(',') %>" />
+    <meta property="schema:educationalRole" content="<%= params[:endUser].join(',') %>" />
 <% end %>
 <% if params[:ageRange] %>
-    <meta property="schema:ageRange" content="<%= params[:ageRange].join(',') %>" />
-<% end %>
-<% if params[:educationalUse] %>
-    <meta property="schema:educationalUse" content="<%= params[:educationalUse].join(',') %>" />
+    <meta property="schema:typicalAgeRange" content="<%= params[:ageRange].join(',') %>" />
 <% end %>
 <% if params[:learningResource] %>
-    <meta property="schema:learningResource" content="<%= params[:learningResource].join(',') %>" />
+    <meta property="schema:learningResourceType" content="<%= params[:learningResource].join(',') %>" />
 <% end %>
 <% if params[:mediaType] %>
     <meta property="schema:mediaType" content="<%= params[:mediaType].join(',') %>" />
@@ -41,8 +38,8 @@
 <% if params[:standards]; params[:standards].each do |param| %>
     <span property="schema:educationalAlignment" typeof="schema:AlignmentObject">
       <meta property="schema:alignmentType" content="Teaches" />
-      <meta property="schema:educationalFramework" content="Common Core State Standards" />
+      <meta property="schema:educationalFramework" content="CCSS" />
       <meta property="schema:targetName" content="<%= param %>" />
-    </span>
+</span>
 <% end; end %>
 </span>
