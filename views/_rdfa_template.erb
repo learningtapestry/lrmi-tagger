@@ -1,18 +1,41 @@
 <span prefix="schema: http://schema.org/" typeof="schema:CreativeWork">
-
-  <% if params[:url] %>  <meta property="schema:url" content="<%= params[:url] %>" />  <% end %>
-  <% if params[:title] %>  <meta property="schema:name" content="<%= params[:title] %>" />  <% end %>
-  <% if params[:description] %>  <meta property="schema:description" content="<%= params[:description] %>" />  <% end %>
-  <% if params[:publisher] %>  <meta property="schema:publisher" content="<%= params[:publisher] %>" />  <% end %>
-  <% if params[:createdBy] %>  <meta property="schema:createdby" content="<%= params[:createdBy] %>" />  <% end %>
-
-  <% if params[:educationalUse] %>  <meta property="schema:educationalUse" content="<%= params[:educationalUse] %>" />  <% end %>
-  <% if params[:endUser] %>  <meta property="schema:endUser" content="<%= params[:endUser] %>" />  <% end %>
-  <% if params[:ageRange] %>  <meta property="schema:ageRange" content="<%= params[:ageRange] %>" />  <% end %>
-
-  <% if params[:learningResource] %>  <meta property="schema:learningResource" content="<%= params[:learningResource] %>" />  <% end %>
-  <% if params[:mediaType] %>  <meta property="schema:mediaType" content="<%= params[:mediaType] %>" />  <% end %>
-  <% if params[:endUser] %>  <meta property="schema:endUser" content="<%= params[:endUser] %>" />  <% end %>
-
-  <% if params[:standards] %>  <meta property="schema:standards" content="<%= params[:standards] %>" />  <% end %>
+<% if params[:url] and not params[:url].empty? %>
+    <meta property="schema:url" content="<%= params[:url] %>" />
+<% end %>
+<% if params[:title] and not params[:title].empty? %>
+    <meta property="schema:name" content="<%= params[:title] %>" />
+<% end %>
+<% if params[:description] and not params[:description].empty? %>
+    <meta property="schema:description" content="<%= params[:description] %>" />
+<% end %>
+<% if params[:about] and not params[:about].empty? %>
+    <meta property="schema:about" content="<%= params[:about] %>" />
+<% end %>
+<% if params[:publisher] and not params[:publisher].empty? %>
+    <meta property="schema:publisher" content="<%= params[:publisher] %>" />
+<% end %>
+<% if params[:author] and not params[:author].empty? %>
+    <meta property="schema:author" content="<%= params[:author] %>" />
+<% end %>
+<% if params[:timeRequired] and not params[:timeRequired].empty? %>
+    <meta property="schema:timeRequired" content="<%= params[:timeRequired] %>" />
+<% end %>
+<% if params[:educationalUse]; params[:educationalUse].each do |param| %>
+    <meta property="schema:educationalUse" content="<%= param %>" />
+<% end; end %>
+<% if params[:endUser]; params[:endUser].each do |param| %>
+    <meta property="schema:endUser" content="<%= param %>" />
+<% end; end %>
+<% if params[:ageRange]; params[:ageRange].each do |param| %>
+    <meta property="schema:ageRange" content="<%= param %>" />
+<% end; end %>
+<% if params[:learningResource]; params[:learningResource].each do |param| %>
+    <meta property="schema:learningResource" content="<%= param %>" />
+<% end; end %>
+<% if params[:mediaType]; params[:mediaType].each do |param| %>
+    <meta property="schema:mediaType" content="<%= param %>" />
+<% end; end %>
+<% if params[:standards]; params[:standards].each do |param| %>
+    <meta property="schema:standards" content="<%= param %>" />
+<% end; end %>
 </span>

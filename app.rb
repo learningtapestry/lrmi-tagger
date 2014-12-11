@@ -3,7 +3,6 @@ require 'sinatra'
 require 'json'
 
 class MyApp < Sinatra::Base
-  #enable :method_override
   enable :sessions
   set :session_secret, 'app00key00change'
 
@@ -22,6 +21,12 @@ class MyApp < Sinatra::Base
   configure :production do
     set :raise_errors, false #false will show nicer error page
     set :show_exceptions, false #true will ignore raise_errors and display backtrace in browser
+  end
+
+  helpers do
+    def h(text)
+      Rack::Utils.escape_html(text)
+    end
   end
 
   get '/' do
