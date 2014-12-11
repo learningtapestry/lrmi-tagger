@@ -33,6 +33,10 @@ class MyApp < Sinatra::Base
     erb :index
   end
 
+  post '/' do
+    erb :index
+  end
+
   post '/rdfa' do
     erb :rdfa
   end
