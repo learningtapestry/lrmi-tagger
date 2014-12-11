@@ -20,21 +20,24 @@
 <% if params[:timeRequired] and not params[:timeRequired].empty? %>
     <meta property="schema:timeRequired" content="<%= params[:timeRequired] %>" />
 <% end %>
-<% if params[:educationalUse]; params[:educationalUse].each do |param| %>
-    <meta property="schema:educationalUse" content="<%= param %>" />
-<% end; end %>
-<% if params[:endUser]; params[:endUser].each do |param| %>
-    <meta property="schema:endUser" content="<%= param %>" />
-<% end; end %>
-<% if params[:ageRange]; params[:ageRange].each do |param| %>
-    <meta property="schema:ageRange" content="<%= param %>" />
-<% end; end %>
-<% if params[:learningResource]; params[:learningResource].each do |param| %>
-    <meta property="schema:learningResource" content="<%= param %>" />
-<% end; end %>
-<% if params[:mediaType]; params[:mediaType].each do |param| %>
-    <meta property="schema:mediaType" content="<%= param %>" />
-<% end; end %>
+<% if params[:educationalUse] %>
+    <meta property="schema:educationalUse" content="<%= params[:educationalUse].join(',') %>" />
+<% end %>
+<% if params[:endUser] %>
+    <meta property="schema:endUser" content="<%= params[:endUser].join(',') %>" />
+<% end %>
+<% if params[:ageRange] %>
+    <meta property="schema:ageRange" content="<%= params[:ageRange].join(',') %>" />
+<% end %>
+<% if params[:educationalUse] %>
+    <meta property="schema:educationalUse" content="<%= params[:educationalUse].join(',') %>" />
+<% end %>
+<% if params[:learningResource] %>
+    <meta property="schema:learningResource" content="<%= params[:learningResource].join(',') %>" />
+<% end %>
+<% if params[:mediaType] %>
+    <meta property="schema:mediaType" content="<%= params[:mediaType].join(',') %>" />
+<% end %>
 <% if params[:standards]; params[:standards].each do |param| %>
     <meta property="schema:standards" content="<%= param %>" />
 <% end; end %>
