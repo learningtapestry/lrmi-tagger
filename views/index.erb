@@ -39,15 +39,21 @@
       <table cellspacing="2" cellpadding="5" class="table-condensed">
         <tbody><tr>
           <td style="text-align:left;">
-            <label class="control-label" for="educationalAlignment">Educational Alignment</label>
+            <div class="label-helper">
+              <div class="pull-left control-label">Educational Alignment</div>
+              <div class="pull-right"><i class="icon-question-sign" data-placement="left" data-content="The framework to which the resource being described is aligned."></i></div>
+            </div>
             <select class="input-xlarge required" id="educationalAlignment">
               <option value="CCSS - English Language Arts"  selected="selected">CCSS - English Language Arts</option>
               <option value="CCSS - Mathematics">CCSS - Mathematics</option>
             </select>
           </td>
           <td style="text-align:left;">
-            <label class="control-label" for="alignmentType">Alignment Type</label>
-            <select class="input-xlarge required" id="alignmentType">
+            <div class="label-helper">
+              <div class="pull-left control-label">Alignment Type</div>
+              <div class="pull-right"><i class="icon-question-sign" data-placement="left" data-content="A category of alignment between the learning resource and the framework node."></i></div>
+            </div>
+            <select class="input-large required" id="alignmentType">
               <option>Alignment Type...</option>
               <option value="assesses">Assesses</option>
               <option value="teaches" selected="selected">Teaches</option>
@@ -57,7 +63,10 @@
         </tr>
         <tr>
           <td style="text-align:left;">
-            <label class="control-label" for="dotNotation">Dot Notation</label>
+            <div class="label-helper">
+              <div class="pull-left control-label">Dot Notation</div>
+              <div class="pull-right"><i class="icon-question-sign" data-placement="left" data-content="The name of a node in an established educational framework."></i></div>
+            </div>
             <input type="text" class="input-xlarge required"  name="dotNotation" id="dotNotation" placeholder="Dot Notation">
           </td>
           <td style="text-align:left;">

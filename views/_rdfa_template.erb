@@ -18,7 +18,7 @@
     <meta property="schema:author" content="<%= params[:author] %>" />
 <% end %>
 <% if params[:timeRequired] and not params[:timeRequired].empty? %>
-    <meta property="schema:timeRequired" content="<%= params[:timeRequired] %>" />
+    <meta property="schema:timeRequired" content="<%= 'P' + params[:timeRequired] %>" />
 <% end %>
 <% if params[:educationalUse] %>
     <meta property="schema:educationalUse" content="<%= params[:educationalUse].join(',') %>" />

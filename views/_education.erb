@@ -2,11 +2,14 @@
   <div class="accordion" id="educationAccordion">
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a class="accordion-toggle" data-parent="#usageAccordion" href="#educationalUseDiv">Educational Use</a>
+        <div class="label-helper accordion-toggle">
+          <div class="pull-left control-label">Educational Use</div>
+          <div class="pull-right"><i class="icon-question-sign" data-placement="left" data-content="The purpose of the work in the context of education."></i></div>
+        </div>
       </div>
       <div id="endUserDiv" class="accordion-body">
         <div class="accordion-inner">
-          <select multiple="multiple" class="multiple input-xlarge" name="educationalUse[]" id="educationalUse">
+          <select multiple="multiple" class="multiple input-xlarge" name="educationalUse" id="educationalUse">
             <option>Assessment</option>
             <option>Curriculum and Instruction</option>
             <option>Enhancement</option>
@@ -18,11 +21,14 @@
     </div>
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#educationAccordion" href="#endUserDiv" id="endUserLink">End User</a>
+        <div class="label-helper accordion-toggle">
+          <div class="pull-left control-label">Educational Role</div>
+          <div class="pull-right"><i class="icon-question-sign" data-placement="left" data-content="The role that describes the target audience of the content."></i></div>
+        </div>
       </div>
       <div id="endUserDiv" class="accordion-body">
         <div class="accordion-inner">
-          <select multiple="multiple" class="multiple input-xlarge" name="endUser[]">
+          <select multiple="multiple" class="multiple input-xlarge" name="endUser">
             <option>Administrator</option>
             <option>Parent</option>
             <option>Student</option>
@@ -33,11 +39,14 @@
     </div>
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#educationAccordion" href="#ageRangeDiv">Age Range</a>
+        <div class="label-helper accordion-toggle">
+          <div class="pull-left control-label">Age Range</div>
+          <div class="pull-right"><i class="icon-question-sign" data-placement="left" data-content="The typical range of ages the content’s intended end user."></i></div>
+        </div>
       </div>
       <div id="ageRangeDiv" class="accordion-body">
         <div class="accordion-inner">
-          <select multiple="multiple" class="multiple input-xlarge" name="ageRange[]" id="ageRange">
+          <select multiple="multiple" class="multiple input-xlarge" name="ageRange" id="ageRange">
             <option>0-2</option>
             <option>3-5</option>
             <option>5-8</option>

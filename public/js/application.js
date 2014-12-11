@@ -56,6 +56,10 @@ $(function() {
 	});
 });
 
+$(document).ready(function() {
+	$("i.icon-question-sign").popover({'trigger':'hover'});
+});
+
 
 /* - find no content loads
 $('#iframe').load(function (e) {

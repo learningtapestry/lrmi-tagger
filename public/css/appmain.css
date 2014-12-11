@@ -631,7 +631,7 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#9999
 .input-small{width:90px;}
 .input-medium{width:150px;}
 .input-large{width:210px;}
-.input-xlarge{width:270px;}
+.input-xlarge{width:310px;}
 .input-xxlarge{width:530px;}
 input[class*="span"],select[class*="span"],textarea[class*="span"],.uneditable-input[class*="span"],.row-fluid input[class*="span"],.row-fluid select[class*="span"],.row-fluid textarea[class*="span"],.row-fluid .uneditable-input[class*="span"]{float:none;margin-left:0;}
 .input-append input[class*="span"],.input-append .uneditable-input[class*="span"],.input-prepend input[class*="span"],.input-prepend .uneditable-input[class*="span"],.row-fluid input[class*="span"],.row-fluid select[class*="span"],.row-fluid textarea[class*="span"],.row-fluid .uneditable-input[class*="span"],.row-fluid .input-prepend [class*="span"],.row-fluid .input-append [class*="span"]{display:inline-block;}
@@ -2229,18 +2229,12 @@ form{margin-bottom:0;}
   color: #555555;
 }
 
-#educationalUse {
-  height: 100px;
-}
+#educationalUse { height: 100px; }
+#ageRange { height: 150px; }
+#learningResource { height: 130px; }
+#mediaType { height: 130px; }
 
-#ageRange {
-  height: 150px;
-}
+.label-helper { margin-bottom: 25px; }
 
-#learningResource {
-  height: 130px;
-}
-
-#mediaType {
-  height: 130px;
-}
+.control-label { color: #2fa4e7; }
+i.icon-question-sign { color: #33b3f9; }

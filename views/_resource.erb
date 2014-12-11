@@ -2,7 +2,10 @@
   <div class="accordion" id="resourceAccordion">
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#resourceAccordion" href="#learningResourceDiv">Learning Resource Type</a>
+        <div class="label-helper accordion-toggle">
+          <div class="pull-left control-label">Learning Resource Type</div>
+          <div class="pull-right"><i class="icon-question-sign" data-placement="left" data-content="The predominant type or kind characterizing the learning resource."></i></div>
+        </div>
       </div>
       <div id="learningResourceDiv" class="accordion-body">
         <div class="accordion-inner">
@@ -36,7 +39,10 @@
 
       <div class="accordion-group">
         <div class="accordion-heading">
-          <a class="accordion-toggle" data-parent="#resourceAccordion" href="#mediaTypeDiv" id="mediaTypeDiv">Media Type</a>
+          <div class="label-helper accordion-toggle">
+            <div class="pull-left control-label">Media Type</div>
+            <div class="pull-right"><i class="icon-question-sign" data-placement="left" data-content="The type of media the learning resource is delivered in."></i></div>
+          </div>
         </div>
         <div id="mediaTypeDiv" class="accordion-body">
           <div class="accordion-inner">
@@ -61,11 +67,14 @@
 
       <div class="accordion-group">
         <div class="accordion-heading">
-          <a class="accordion-toggle" data-parent="#resourceAccordion" href="#timeRequired" id="timeRequired">Time Required</a>
+          <div class="label-helper accordion-toggle">
+            <div class="pull-left control-label">Time Required</div>
+            <div class="pull-right"><i class="icon-question-sign" data-placement="left" data-content="Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience."></i></div>
+          </div>
         </div>
         <div id="mediaTypeDiv" class="accordion-body">
           <div class="accordion-inner">
-            <input type="text" class="input-xlarge" name="timeRequired" placeholder="1H30M">
+            <input type="text" class="input-xlarge" name="timeRequired" placeholder="ISO 8601 format: 2D4H30M">
           </div>
         </div>
       </div>
