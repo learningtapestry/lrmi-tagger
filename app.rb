@@ -27,6 +27,11 @@ class MyApp < Sinatra::Base
     def h(text)
       Rack::Utils.escape_html(text)
     end
+
+    ## Helper function to determine if parameter exists and is not empty from form POST
+    def param_exists?(param_name)
+      params[param_name] and not params[param_name].empty? ? true : false
+    end
   end
 
   get '/' do

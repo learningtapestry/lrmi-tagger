@@ -1,48 +1,69 @@
-<span prefix="schema: http://schema.org/" typeof="schema:CreativeWork">
-<% if params[:url] and not params[:url].empty? %>
-    <meta property="schema:url" content="<%= params[:url] %>" />
+{
+  "@type": "CreativeWork",
+<% if param_exists? :url %>
+  "@id": "<%= params[:url] %>",
+  "url": "<%= params[:url] %>",
 <% end %>
-<% if params[:title] and not params[:title].empty? %>
-    <meta property="schema:name" content="<%= params[:title] %>" />
+<% if param_exists? :title %>
+  "name": "<%= params[:title] %>",
 <% end %>
-<% if params[:description] and not params[:description].empty? %>
-    <meta property="schema:description" content="<%= params[:description] %>" />
+<% if param_exists? :description %>
+  "description": "<%= params[:description] %>",
 <% end %>
-<% if params[:about] and not params[:about].empty? %>
-    <meta property="schema:about" content="<%= params[:about] %>" />
+<% if param_exists? :about %>
+  "about": "<%= params[:about] %>",
 <% end %>
-<% if params[:publisher] and not params[:publisher].empty? %>
-    <meta property="schema:publisher" content="<%= params[:publisher] %>" />
+<% if param_exists? :publisher %>
+  "publisher": {
+    "name": "<%= params[:publisher] %>",
+    "@type": "Organization"
+  },
 <% end %>
-<% if params[:author] and not params[:author].empty? %>
-    <meta property="schema:author" content="<%= params[:author] %>" />
+<% if param_exists? :author %>
+  "author": {
+    "name": "<%= params[:author] %>",
+    "@type": "Person"
+  },
 <% end %>
-<% if params[:timeRequired] and not params[:timeRequired].empty? %>
-    <meta property="schema:timeRequired" content="<%= params[:timeRequired] %>" />
+<% if param_exists? :timeRequired %>
+  "timeRequired": "<%= params[:timeRequired] %>",
 <% end %>
-<% if params[:educationalUse] %>
-    <meta property="schema:educationalUse" content="<%= params[:educationalUse].join(',') %>" />
+<% if param_exists? :educationalUse %>
+  "educationalUse": <%= params[:educationalUse] %>,
 <% end %>
-<% if params[:endUser] %>
-    <meta property="schema:endUser" content="<%= params[:endUser].join(',') %>" />
+<% if param_exists? :educationalRole %>
+  "educationalRole": <%= params[:educationalRole] %>,
 <% end %>
-<% if params[:ageRange] %>
-    <meta property="schema:ageRange" content="<%= params[:ageRange].join(',') %>" />
+<% if param_exists? :ageRange %>
+  "ageRange": <%= params[:ageRange] %>,
 <% end %>
-<% if params[:educationalUse] %>
-    <meta property="schema:educationalUse" content="<%= params[:educationalUse].join(',') %>" />
+<% if param_exists? :learningResourceType %>
+  "learningResourceType": <%= params[:learningResourceType] %>,
 <% end %>
-<% if params[:learningResource] %>
-    <meta property="schema:learningResource" content="<%= params[:learningResource].join(',') %>" />
+<% if param_exists? :mediaType %>
+  "learningResourceType": <%= params[:mediaType] %>,
 <% end %>
-<% if params[:mediaType] %>
-    <meta property="schema:mediaType" content="<%= params[:mediaType].join(',') %>" />
+<% if param_exists? :standards %>
+  "educationalAlignment": [ <% params[:standards].each_with_index do |param, idx| %>
+    {
+        "alignmentType": "teaches",
+        "educationalFramework": "Common Core State Standards",
+        "targetName": "<%= param %>",
+        "@type": "AlignmentObject"
+    }<%= ',' if idx < (params[:standards].size - 1) %><% end %>
+  ],
 <% end %>
-<% if params[:standards]; params[:standards].each do |param| %>
-    <span property="schema:educationalAlignment" typeof="schema:AlignmentObject">
-      <meta property="schema:alignmentType" content="Teaches" />
-      <meta property="schema:educationalFramework" content="Common Core State Standards" />
-      <meta property="schema:targetName" content="<%= param %>" />
-    </span>
-<% end; end %>
-</span>
+  "@context": [
+    {
+      "url": { "@type": "@id" },
+      "@vocab": "http://schema.org/"
+    },
+    {
+      "lrmi": "http://lrmi.net/the-specification#",
+      "useRightsUrl": {
+        "@id": "lrmi:useRightsUrl",
+        "@type": "@id"
+      }
+    }
+  ]
+}

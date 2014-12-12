@@ -1,45 +1,45 @@
 <span prefix="schema: http://schema.org/" typeof="schema:CreativeWork">
-<% if params[:url] and not params[:url].empty? %>
+<% if param_exists? :url %>
     <meta property="schema:url" content="<%= params[:url] %>" />
 <% end %>
-<% if params[:title] and not params[:title].empty? %>
+<% if param_exists? :title %>
     <meta property="schema:name" content="<%= params[:title] %>" />
 <% end %>
-<% if params[:description] and not params[:description].empty? %>
+<% if param_exists? :description %>
     <meta property="schema:description" content="<%= params[:description] %>" />
 <% end %>
-<% if params[:about] and not params[:about].empty? %>
+<% if param_exists? :about %>
     <meta property="schema:about" content="<%= params[:about] %>" />
 <% end %>
-<% if params[:publisher] and not params[:publisher].empty? %>
+<% if param_exists? :publisher %>
     <meta property="schema:publisher" content="<%= params[:publisher] %>" />
 <% end %>
-<% if params[:author] and not params[:author].empty? %>
+<% if param_exists? :author %>
     <meta property="schema:author" content="<%= params[:author] %>" />
 <% end %>
-<% if params[:timeRequired] and not params[:timeRequired].empty? %>
+<% if param_exists? :timeRequired %>
     <meta property="schema:timeRequired" content="<%= params[:timeRequired] %>" />
 <% end %>
-<% if params[:educationalUse] %>
+<% if param_exists? :educationalUse %>
     <meta property="schema:educationalUse" content="<%= params[:educationalUse].join(',') %>" />
 <% end %>
-<% if params[:endUser] %>
+<% if param_exists? :endUser %>
     <meta property="schema:educationalRole" content="<%= params[:endUser].join(',') %>" />
 <% end %>
-<% if params[:ageRange] %>
+<% if param_exists? :ageRange %>
     <meta property="schema:typicalAgeRange" content="<%= params[:ageRange].join(',') %>" />
 <% end %>
-<% if params[:learningResource] %>
+<% if param_exists? :learningResource %>
     <meta property="schema:learningResourceType" content="<%= params[:learningResource].join(',') %>" />
 <% end %>
-<% if params[:mediaType] %>
+<% if param_exists? :mediaType %>
     <meta property="schema:mediaType" content="<%= params[:mediaType].join(',') %>" />
 <% end %>
-<% if params[:standards]; params[:standards].each do |param| %>
+<% if param_exists? :standards; params[:standards].each do |param| %>
     <span property="schema:educationalAlignment" typeof="schema:AlignmentObject">
-      <meta property="schema:alignmentType" content="Teaches" />
-      <meta property="schema:educationalFramework" content="CCSS" />
+      <meta property="schema:alignmentType" content="teaches" />
+      <meta property="schema:educationalFramework" content="Common Core State Standards" />
       <meta property="schema:targetName" content="<%= param %>" />
-</span>
+    </span>
 <% end; end %>
 </span>
