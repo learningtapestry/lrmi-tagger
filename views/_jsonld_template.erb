@@ -46,9 +46,9 @@
 <% if param_exists? :standards %>
   "educationalAlignment": [ <% params[:standards].each_with_index do |param, idx| %>
     {
-        "alignmentType": "teaches",
+        "alignmentType": "<%= param.split('|')[1] %>",
         "educationalFramework": "Common Core State Standards",
-        "targetName": "<%= param %>",
+        "targetName": "<%= param.split('|')[0] %>",
         "@type": "AlignmentObject"
     }<%= ',' if idx < (params[:standards].size - 1) %><% end %>
   ],

@@ -37,9 +37,9 @@
 <% end %>
 <% if param_exists? :standards; params[:standards].each do |param| %>
     <span property="schema:educationalAlignment" typeof="schema:AlignmentObject">
-      <meta property="schema:alignmentType" content="teaches" />
+      <meta property="schema:alignmentType" content="<%= param.split('|')[1] %>" />
       <meta property="schema:educationalFramework" content="Common Core State Standards" />
-      <meta property="schema:targetName" content="<%= param %>" />
+      <meta property="schema:targetName" content="<%= param.split('|')[0] %>" />
     </span>
 <% end; end %>
 </span>

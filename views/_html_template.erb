@@ -1,0 +1,53 @@
+<h3>Resource Metadata</h3>
+
+<h4>General</h4>
+
+<% if param_exists? :url %>
+  <p><b>Website URL:</b> <%= params[:url] %></p>
+<% end %>
+<% if param_exists? :title %>
+  <p><b>Page Title:</b> <%= params[:title] %></p>
+<% end %>
+<% if param_exists? :description %>
+  <p><b>Page Description:</b> <%= params[:description] %></p>
+<% end %>
+<% if param_exists? :about %>
+  <p><b>Topic/Subject:</b> <%= params[:about] %></p>
+<% end %>
+<% if param_exists? :publisher %>
+  <p><b>Publisher:</b> <%= params[:publisher] %></p>
+<% end %>
+<% if param_exists? :author %>
+  <p><b>Author:</b> <%= params[:author] %></p>
+<% end %>
+
+<h4>Education</h4>
+
+<% if param_exists? :educationalUse %>
+  <p><b>Educational Use(s):</b> <%= params[:educationalUse].join(',') %></p>
+<% end %>
+<% if param_exists? :endUser %>
+  <p><b>Educational Role(s):</b> <%= params[:endUser].join(',') %></p>
+<% end %>
+<% if param_exists? :ageRange %>
+  <p><b>Typical Age Range(s):</b> <%= params[:ageRange].join(',') %></p>
+<% end %>
+
+<h4>Resource</h4>
+
+<% if param_exists? :learningResource %>
+  <p><b>Learning Resource Type(s):</b> <%= params[:learningResource].join(',') %></p>
+<% end %>
+<% if param_exists? :mediaType %>
+  <p><b>Media Type(s):</b> <%= params[:mediaType].join(',') %></p>
+<% end %>
+<% if param_exists? :timeRequired %>
+  <p><b>Time Required:</b> <%= params[:timeRequired] %></p>
+<% end %>
+
+<h4>Standards</h4>
+
+<% if param_exists? :standards; params[:standards].each do |param| %>
+  <p><b>Standard:</b> <%= param.split('|')[0] %> (<%= param.split('|')[1] %>)</p>
+<% end; end %>
+

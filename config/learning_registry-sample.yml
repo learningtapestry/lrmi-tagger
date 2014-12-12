@@ -1,0 +1,5 @@
+publish_location: https://sandbox.learningregistry.org
+consumer_key: CONSUMER_KEY
+consumer_secret: CONSUMER_SECRET
+token_key: TOKEN_KEY
+token_secret: TOKEN_SECRET

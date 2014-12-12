@@ -50,16 +50,9 @@ $(document).on("click",".closetdd",function(){
 	$thisc.parent().parent().hide("slow").remove();
 });
 
-$(function() {
-	$('#new_btn').click(function() {
-		return window.confirm("Are you sure you would like to tag a new resource?");
-	});
-});
-
 $(document).ready(function() {
 	$("i.icon-question-sign").popover({'trigger':'hover'});
 });
-
 
 /* - find no content loads
 $('#iframe').load(function (e) {
@@ -77,4 +70,10 @@ $('#iframe').load(function (e) {
 		// didn't load
 	}
 });
+
+ $(function() {
+ $('#new_btn').click(function() {
+ return window.confirm("Are you sure you would like to tag a new resource?");
+ });
+ });
 */

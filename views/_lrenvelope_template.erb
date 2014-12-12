@@ -1,0 +1,20 @@
+{ "documents":
+  [
+    {
+      "doc_type": "resource_data",
+      "doc_version": "0.49.0",
+      "resource_locator": "<%= params[:url] %>",
+      "resource_data_type": "metadata",
+      "payload_placement": "inline",
+      "resource_data": <%= erb :_jsonld_template %>,
+      "keys": [ "LRMITagger.org" ],
+      "TOS": {"submission_TOS": "http://www.learningregistry.org/tos"},
+      "active": true,
+      "payload_schema": [
+        "schema.org",
+        "lrmi",
+        "JSON-LD"
+      ]
+    }
+  ]
+}
