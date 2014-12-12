@@ -46,7 +46,7 @@ class MyApp < Sinatra::Base
     erb :rdfa
   end
 
-  post '/lr' do
-    erb :lr
+  post '/learning_registry' do
+    erb :learning_registry
   end
 end
