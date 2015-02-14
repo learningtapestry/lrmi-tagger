@@ -14,7 +14,7 @@ To install it you need to follow these steps:
 
 ## Installation
 
-1. Install Ruby 2.1.x using RVM
+### 1. Install Ruby 2.1.x using RVM
 
 *Install RVM*
 
@@ -46,7 +46,7 @@ To install release Ruby version:
 
 ```rvm install 2.1 (the current release of 2.1.x will be installed)```
 
-2. Obtain source code
+### 2. Obtain source code
 
 Install git tools and curl development headers with SSL support:
 
@@ -62,7 +62,7 @@ Go to lrmi-tagger directory and following command:
 
 ```bundle install```
 
-3. Install Passenger with Ngnix
+### 3. Install Passenger with Ngnix
 
 Install Passenger
 
@@ -76,7 +76,7 @@ Passenger checks that all dependancies are installed.  If any are missing, Passe
 
 Passenger offers users the choice between an automated setup or a customized one. Press 1 and enter to choose the recommended "easy installation".
 
-4. Config Nginx and start service
+### 4. Config Nginx and start service
 
 Open the configuration file
  
@@ -101,15 +101,15 @@ Start the Ngnix server
 
 If there is "nginx: unrecognized service" error, it means that the startup scripts need to be created. Here are commands for it.
 
-# Download nginx startup script
+Download nginx startup script
 ```sudo wget -O init-deb.sh https://www.linode.com/docs/assets/660-init-deb.sh```
 
-# Move the script to the init.d directory & make executable
+Move the script to the init.d directory & make executable
 ```
 sudo mv init-deb.sh /etc/init.d/nginx
 sudo chmod +x /etc/init.d/nginx
 ```
-# Add nginx to the system startup
+Add nginx to the system startup
 ```sudo /usr/sbin/update-rc.d -f nginx defaults```
 
 You can control Ngnix service using:
@@ -120,7 +120,7 @@ You can control Ngnix service using:
 	sudo service nginx reload
 ```
 
-5. Configure lrmi-tagger project
+### 5. Configure lrmi-tagger project
 
 You need to go to lrmi-tagger/config directory and copy learning_registry-sample.yml and rename it as learning_registry.yml.
 
