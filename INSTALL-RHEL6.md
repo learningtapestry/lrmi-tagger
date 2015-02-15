@@ -1,12 +1,8 @@
-Deploy Ruby project 
-on RHEL 6 server
+# Installation Instructions for RedHat Enterprise Linux 6
 
+## Overview
 
-Overview
-
-This document is to guide how to deploy lrmi-tagger project on RHEL 6 server.
-Lrmi-tagger project use Ruby 2.1.* and Nginx and Passenger integration.
-The project is on “https://github.com/actualize-technology/lrmi-tagger”.
+This document is to guide how to deploy lrmi-tagger project on RHEL 6 server. The LRMI Tagger uses Ruby 2.1.x and Nginx/Passenger as a web server.
 
 To deploy it you need to follow these steps :
 
@@ -16,119 +12,105 @@ To deploy it you need to follow these steps :
 4. Configure Nginx and start service.
 5. Configure prject.
 
+## Installation
 
-1. Install Ruby 2.1.* using RVM
+### 1. Install Ruby 2.1.x using RVM
 
- - You need to install RVM first.
+*Install RVM*
 
-	Installing the stable release version of RVM:
-		\curl -sSL https://get.rvm.io | bash -s stable
-	To get the latest development state for only RVM (recommended):
-		\curl -sSL https://get.rvm.io | bash
+Install the following required prerequisite packages:
 
-	( if you get error, then please install following pakages.
-		sudo yum install curl
-		sudo yum install gcc-c++ patch readline readline-devel zlib zlib-devel 
-		sudo yum install libyaml-devel libffi-devel openssl-devel make 
-		sudo yum install bzip2 autoconf automake libtool bison iconv-devel
-	)
+```
+sudo yum install curl
+sudo yum install gcc-c++ patch readline readline-devel zlib zlib-devel 
+sudo yum install libyaml-devel libffi-devel openssl-devel make 
+sudo yum install bzip2 autoconf automake libtool bison iconv-devel
+```
 
-	after installing RVM, to start it you need to run following command in all 	your open shall window.
-		source ~/.profile	
+Installing the stable release version of RVM:
 
+```\curl -sSL https://get.rvm.io | bash -s stable```
 
- - Install Ruby 2.1.*
+After installing RVM, to start it you need to run following command:
 
-	To install release ruby version (Recommended) : 
-		rvm install 2.1 (then 2.1.5 will be installed)
-	To install specific ruby version (ex : 2.1.1) :
-		rvm install 2.1.1
+```source ~/.profile```
 
-	If you get message to ask username and password, then you can ignore it by 	clicking ctrl+C.
+*Install Ruby 2.1.x*
 
+To install release ruby version (Recommended) : 
 
+```rvm install 2.1 (the current release of 2.1.x will be installed)```
 
-2. Get source
+### 2. Obtain source code
 
- - You need to install git first.
+Install git tools, curl development headers with SSL support and Ruby development headers
 
-	sudo yum install git
+```sudo yum install git libcurl-devel ruby-devel```
 
- - Clone lrmi-tagger project to RHEL 6 server.
+Clone lrmi-tagger project to RHEL 6 server.
 
-	sudo git clone https://github.com/actualize-technology/lrmi-tagger [folder 	name]
-   [folder name] is local holder on Ubuntu server. Lets do it “lrmi-tagger”
-   then command is following :
-	sudo git clone https://github.com/actualize-technology/lrmi-tagger lrmi-	tagger
+```sudo git clone https://github.com/actualize-technology/lrmi-tagger```
 
- - bundle install
+Run bundle install for required gems:
 
-   go to lrmi-tagger directory and following command:
-	bundle install
+Go to lrmi-tagger directory and following command:
 
+```bundle install```
 
-3. Install Passenger with Ngnix
+### 3. Install Passenger with Ngnix
 
- - Install Passenger
+Install Passenger
 
-	gem install passenger
+```gem install passenger```
 
- - phusion passenger for Nginx
+Configure Phusion Passenger for Nginx
 
-	rvmsudo passenger-install-nginx-module
+```rvmsudo passenger-install-nginx-module```
 
-   It is recommended that you relax permissions as follows: click ctrl+c and following command.
-	sudo chmod o+x "/home/[your account]"
+It is recommended that you modify permissions as follows:
 
-  run “rvmsudo passenger-install-nginx-module” again
-  
-  and according to the install guide,
-   * To install Curl development headers with SSL support:
-   	sudo yum install libcurl-devel
-
-   * To install Ruby development headers:
-   	sudo yum install ruby-devel
-
-  if your virtual memory is small than 1024M, then you can set swap.
-	sudo dd if=/dev/zero of=/swap bs=1M count=1024
-  	sudo mkswap /swap
-	sudo swapon /swap
-
-  and Ngnix install again, Passenger offers users the choice between an automated setup or a customized one. Press 1 and enter to choose the recommended, easy, installation.
+```sudo chmod o+x "/opt/[lrmi-tagger location]"```
 
 
+If your virtual memory is small than 1024M, then you can set swap.
 
+```
+sudo dd if=/dev/zero of=/swap bs=1M count=1024
+sudo mkswap /swap
+sudo swapon /swap
+```
 
-4. Config Nginx and start service
+Passenger offers users the choice between an automated setup or a customized one. Press 1 and enter to choose the recommended "easy installation".
 
- - open config file
+### 4. Config Nginx and start service
 
-	 sudo nano /opt/nginx/conf/nginx.conf
+Open the configuration file
 
- - Configuration Nginx conf file.
+```sudo nano /opt/nginx/conf/nginx.conf```
 
+The configuration file should be set as:
 
- 	You can refer attached nginx.conf file, improtant area is following :
-	server {
+```
+server {
         listen 80;
         server_name lrmitagger.org www.lrmitagger.org;
-	  root /home/ruby-guy/lrmi-tagger/public;
+	  root /opt/lrmi-tagger/public;
         passenger_enabled on;
         passenger_friendly_error_pages on;
         rails_env production;
     }
+```
 
-  you need to set root directory as full path of your lrmi-tagger/public directory on Ubuntu server
+Start the Ngnix server
 
-- Run Ngnix server
+```sudo service nginx start```
 
-  	sudo service nginx start 
+If there is "nginx: unrecognized service" error, it means that the startup scripts need to be created. Here are commands for it:
 
-if there is "nginx: unrecognized service" error, it means that the startup scripts need to be created. Here are commands for it.
-
-	# Creat nginx startup script
-	sudo nano /etc/init.d/nginx
-	# Copy following scripts to the file and save.
+```
+# Creat nginx startup script
+sudo nano /etc/init.d/nginx
+# Copy following scripts to the file and save.
 
 
 ################################  Nginx  ##########################################
@@ -240,36 +222,36 @@ case "$1" in
         exit 2
 esac
 
-##################################################################################3
+##################################################################################
+```
+
+Make the script executable:
+
+```sudo chmod +x /etc/init.d/nginx```
 
 
+You can control Ngnix service using:
 
-	sudo chmod +x /etc/init.d/nginx
-
-
-then you can control Ngnix service now.
+```
 	sudo service nginx stop 
 	sudo service nginx start 
 	sudo service nginx restart
 	sudo service nginx reload
+```
 
-if there is “Starting nginx: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)” error, then you can do as following :
+If you encounter an errir "Starting nginx: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)" error, then you can do as following :
+
+```
 	sudo service nginx stop
 	sudo fuser -k 80/tcp
 	sudo service nginx start
+```
 
-if there is “Starting nginx: nginx.”, then it is completed successfully.
+### 5. Configure lrmi-tagger project
 
+You need to go to lrmi-tagger/config directory and copy learning_registry-sample.yml and rename it as learning_registry.yml.
 
-	
-
-5. Configure lrmi-tagger project
-
-you need to go to lrmi-tagger/config directory and copy learning_registry-sample.yml and rename it as learning_registry.yml.
-
-
-Then Project is deployed successfully,
-when you enter the RHEL 6 server address on web browser, you can check lrmi-tagger web page.
+The project should be deployed successfully, when you enter http://[server-address] on web browser, the LRMI Tagger home page should show.
 
 
 
