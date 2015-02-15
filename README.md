@@ -12,3 +12,10 @@ This tool allows for the evaluation of digital web-based resources and tagging t
 * **Web Server (proxy):**  Nginx.org 1.7.x
 * **Web Server (Ruby):**  Phusion Passenger is recommended, however should work with any Rack compatible server (Thin, Unicorn, etc)
 * **Gems:**  Sinatra, Sinantra-Contrib and OAuth
+
+### Installation
+
+Please see the following installation instructions for Ubuntu or RHEL
+
+* INSTALL-RHEL6.md - RedHat Enterprise Linux version 6
+* INSTALL-Ubuntu14.md - Ubuntu 14
